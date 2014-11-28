@@ -1,0 +1,63 @@
+train on 260 instances, test on 87 instances
+Most Informative Features
+       contains(financi) = True              neg : pos    =      8.1 : 1.0
+        contains(financ) = True              neg : pos    =      8.1 : 1.0
+        contains(market) = True              neg : pos    =      6.0 : 1.0
+         contains(close) = True              pos : neg    =      5.7 : 1.0
+        contains(declin) = True              neg : pos    =      4.8 : 1.0
+          contains(year) = True              neg : pos    =      4.7 : 1.0
+        contains(reiter) = True              pos : neg    =      4.1 : 1.0
+         contains(trade) = True              pos : neg    =      4.0 : 1.0
+       contains(analyst) = True              pos : neg    =      3.7 : 1.0
+      contains(industri) = True              neg : pos    =      3.3 : 1.0
+accuracy: 0.758620689655
+********************************************************************************
+tweet: Tencent Is Becoming A Global Entertainment Power, to compete with AliBaba for content http://t.co/aGPB46rdjX $BABA $LGF $TWX #Stocks #NYSE
+probability positive:  0.211512698527
+probability negative:  0.788487301473
+********************************************************************************
+********************************************************************************
+tweet: 3-star analyst Bhavan Suri from William Blair reiterated a BUY on $VEEV. Bhavan has a 67% success rate http://goo.gl/i729x6  #NYSE #stocks
+probability positive:  0.555276613898
+probability negative:  0.444723386102
+********************************************************************************
+********************************************************************************
+tweet: 0-star analyst Philip Shen from Roth Capital maintained a HOLD on $SOL. Philip has a 34% success rate http://goo.gl/ktYtpY  #NYSE #stocks
+probability positive:  0.555276613898
+probability negative:  0.444723386102
+********************************************************************************
+********************************************************************************
+tweet: 2-star analyst James Kisner from Jefferies reiterated a HOLD on $HPQ.  http://goo.gl/Os1Wiy  #NYSE #stocks #HPQ
+probability positive:  0.30340492123
+probability negative:  0.69659507877
+********************************************************************************
+********************************************************************************
+tweet: 1-star analyst Judson Bailey from Wells Fargo maintained a SELL on $SDRL. Judson has a 22.2% success rate http://goo.gl/rvdT6T  #NYSE
+probability positive:  0.555276613898
+probability negative:  0.444723386102
+********************************************************************************
+********************************************************************************
+tweet: Halliburton and Macy's Big Market Movers http://cur.lv/g0rtv  #NYSE
+probability positive:  0.0899406265976
+probability negative:  0.910059373402
+********************************************************************************
+********************************************************************************
+tweet: Movers and Shakers: Recently Upgraded: $NADL $SO $SDRL $SPLS $AAL $HES $GLNG $MXIM $BDX $BLOX $KKR $QIHU $SCTY $TJX $PBR #trading #nyse
+probability positive:  0.0899406265976
+probability negative:  0.910059373402
+********************************************************************************
+********************************************************************************
+tweet: United Airlines providing entertainment content to your Android device during flights http://bit.ly/1xkcQGM  #DownloadLink #NYSE #UAL
+probability positive:  0.211512698527
+probability negative:  0.788487301473
+********************************************************************************
+********************************************************************************
+tweet: Yahoo May Become The Better Play On Search http://seekingalpha.com/article/2715605-yahoo-may-become-the-better-play-on-search?source=feed_f $AAPL #APPLE $GOOG $MSFT $GOOGL $YHOO
+probability positive:  0.0899406265976
+probability negative:  0.910059373402
+********************************************************************************
+********************************************************************************
+tweet: See why $FB, $GOOG & $TWTR are faves in my charitable trust. http://www.go-tst.com/EFa7g 
+probability positive:  0.0899406265976
+probability negative:  0.910059373402
+********************************************************************************

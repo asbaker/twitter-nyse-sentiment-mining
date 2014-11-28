@@ -3,26 +3,33 @@ import nltk, re, pprint
 from nltk import word_tokenize
 from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import stopwords
+from nltk.stem.porter import *
+
+stemmer = PorterStemmer()
+
+def stem(word):
+  return stemmer.stem(word)
+  #return word
 
 def features(word):
   return {'word': word}
 
 def filtered_word(word):
   isStopword = word in stopwords.words('english')
-  excluded = word in ['$', '&', 'amp', '@', ';', ':', '#', 'http', '!', '/', '``', "''", ",", ".", "...", "--"] or word.find("t.co") != -1 or word.find("-star") != -1
+  excluded = word in ['seas', '&', 'amp', '$', '#', '``', ':', "//", "http", "@", "...", "''", "(", ")", "tsx", "oil"] or word.find("t.c") != -1 or word.find("-star") != -1
   return isStopword or excluded
 
-
 def get_tweets(filename, sentiment):
+
   tweets = []
   f = open(filename)
   for line in f.readlines():
-    words = word_tokenize(line.lower())
-    tweet = [w for w in words if not filtered_word(w)]
+    clean_line = re.sub(r'\W+ ', '', line.lower())
+    words = word_tokenize(clean_line)
+    tweet = [stem(w) for w in words if not filtered_word(w)]
     tweets.append( (tweet, sentiment) )
 
   return tweets
-
 
 def get_words_in_tweets(tweets):
   all_words = []
@@ -30,20 +37,17 @@ def get_words_in_tweets(tweets):
     all_words.extend(words)
   return all_words
 
-
 def get_word_features(wordlist):
   wordlist = nltk.FreqDist(wordlist)
   word_features = wordlist.keys()
   return word_features
 
-
 def extract_features(document):
   document_words = set(document)
   features = {}
   for word in word_features:
-    features['contains(%s)' % word] = (word in document_words)
+    features['contains(%s)' % word] = (stem(word) in document_words)
   return features
-
 
 
 pos_tweets = get_tweets('data/tweet_pos.csv', 'pos')
