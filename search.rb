@@ -4,10 +4,9 @@ require 'mongoid'
 
 require './tweet'
 
+p "**************************************************"
 
 Mongoid.load!('mongoid.yml', :development)
-
-p ENV['twitter_key']
 
 client = Twitter::REST::Client.new do |config|
   config.consumer_key    = ENV['TWITTER_KEY']
@@ -21,12 +20,13 @@ HOW_MANY = 100
 
 puts "Fetching #{HOW_MANY} tweets"
 
-client.search("-alert #nyse",
+count = 1
+client.search("#nyse",
               result_type: "recent",
               count: HOW_MANY,
               lang: 'en', since_id: config.last_tweet_id).take(HOW_MANY).each do |tweet|
 
-  puts "processing tweet"
+  puts "processing tweet #{count}"
 
   user_doc = User.new
   user_doc.twitter_id = tweet.user.id
@@ -53,6 +53,8 @@ client.search("-alert #nyse",
     config.save
     puts "updating last tweet id"
   end
+  count = count.next
 end
 
 puts "Done"
+p "**************************************************"
