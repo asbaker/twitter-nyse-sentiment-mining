@@ -1,5 +1,4 @@
 from __future__ import division
-#import nltk.classify.util
 import nltk, re, pprint
 from nltk import word_tokenize
 from nltk.classify import NaiveBayesClassifier
@@ -10,7 +9,7 @@ def features(word):
 
 def filtered_word(word):
   isStopword = word in stopwords.words('english')
-  excluded = word in ['$', '&', 'amp', '@', ';', ':', '#', 'http', '!', '/', '``', "''", ",", ".", "...", "--"] or word.find("t.co") != -1
+  excluded = word in ['$', '&', 'amp', '@', ';', ':', '#', 'http', '!', '/', '``', "''", ",", ".", "...", "--"] or word.find("t.co") != -1 or word.find("-star") != -1
   return isStopword or excluded
 
 
@@ -67,4 +66,29 @@ classifier = NaiveBayesClassifier.train(training_set)
 classifier.show_most_informative_features()
 
 print 'accuracy:', nltk.classify.util.accuracy(classifier, testing_set)
+
+
+example_tweets = [
+  "Tencent Is Becoming A Global Entertainment Power, to compete with AliBaba for content http://t.co/aGPB46rdjX $BABA $LGF $TWX #Stocks #NYSE",
+  "3-star analyst Bhavan Suri from William Blair reiterated a BUY on $VEEV. Bhavan has a 67% success rate http://goo.gl/i729x6  #NYSE #stocks",
+  "0-star analyst Philip Shen from Roth Capital maintained a HOLD on $SOL. Philip has a 34% success rate http://goo.gl/ktYtpY  #NYSE #stocks",
+  "2-star analyst James Kisner from Jefferies reiterated a HOLD on $HPQ.  http://goo.gl/Os1Wiy  #NYSE #stocks #HPQ",
+  "1-star analyst Judson Bailey from Wells Fargo maintained a SELL on $SDRL. Judson has a 22.2% success rate http://goo.gl/rvdT6T  #NYSE",
+  "Halliburton and Macy's Big Market Movers http://cur.lv/g0rtv  #NYSE",
+  "Movers and Shakers: Recently Upgraded: $NADL $SO $SDRL $SPLS $AAL $HES $GLNG $MXIM $BDX $BLOX $KKR $QIHU $SCTY $TJX $PBR #trading #nyse",
+  "United Airlines providing entertainment content to your Android device during flights http://bit.ly/1xkcQGM  #DownloadLink #NYSE #UAL",
+  "Yahoo May Become The Better Play On Search http://seekingalpha.com/article/2715605-yahoo-may-become-the-better-play-on-search?source=feed_f $AAPL #APPLE $GOOG $MSFT $GOOGL $YHOO",
+  "See why $FB, $GOOG & $TWTR are faves in my charitable trust. http://www.go-tst.com/EFa7g "
+]
+
+
+for tweet in example_tweets:
+  c = classifier.prob_classify(extract_features(tweet.split()))
+
+  print '*'*80
+  print 'tweet:', tweet
+  print 'probability positive: ', c.prob('pos')
+  print 'probability negative: ', c.prob('neg')
+  print '*'*80
+
 
