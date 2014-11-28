@@ -1,9 +1,9 @@
 require 'pry'
 require 'mongoid'
 
-require './tweet'
+require '../tweet'
 
-Mongoid.load!('mongoid.yml', :development)
+Mongoid.load!('../mongoid.yml', :development)
 
 
 symbol_regex = /\$[a-fA-f]{3,4}/
