@@ -1,0 +1,1 @@
+cat tweets.csv | grep -v "VIDG" | grep -v "received a new alert" | grep -v "DVD" | grep -v "STCC" | grep -v -i "forex" | grep -v "Tim Ferris" | grep -v "ThinkingAlpha" | grep -v -i "Penny stock" | grep -v -i "Reserve your name" | grep -v "Thinking Alpha”
