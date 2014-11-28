@@ -9,6 +9,7 @@ class Tweet
   field :favorite_count, type: Integer
   field :retweet_count, type: Integer
   field :twitter_created_at, type: DateTime
+  field :symbols, type: Array
   embeds_one :user
 end
 
